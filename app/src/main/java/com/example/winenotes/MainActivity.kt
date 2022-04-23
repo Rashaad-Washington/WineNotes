@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
             val db = AppDatabase.getDatabase(applicationContext)
             val dao = db.noteDao()
             val results = dao.getAllNotes()
+            for (each in results) {
+                Log.i("STATUS_MAIN:", "read ${each}")
+            }
             Log.i("sadasd", "${results}")
 
             withContext(Dispatchers.Main) {
