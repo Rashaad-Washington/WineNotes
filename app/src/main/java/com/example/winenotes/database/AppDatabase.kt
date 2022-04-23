@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Note::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun employeeDao(): NoteDao
+    abstract fun noteDao(): NoteDao
 
     companion object {
         private val NAME_OF_DATABASE = "note_db"
@@ -25,7 +25,8 @@ abstract class AppDatabase : RoomDatabase() {
                         context.applicationContext,
                         AppDatabase::class.java,
                         NAME_OF_DATABASE
-                    )   .createFromAsset("Note.db")
+                    )
+                        .createFromAsset("note.db")
                         .build()
                 }
             }

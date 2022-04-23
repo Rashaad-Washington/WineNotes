@@ -12,8 +12,5 @@ class Note(
     @ColumnInfo val notes : String,
     @ColumnInfo val lastModified : String
 ) {
-    fun toLog() {
-        Log.i("ID", "${id}")
-    }
 
 }

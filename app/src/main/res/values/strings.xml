@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">WineNotes</string>
+    <string name="item_textview">itemTextView</string>
+
+    <string name="intent_purpose_key">purpose</string>
+    <string name="intent_purpose_add_note">Add</string>
+    <string name="intent_purpose_update_note">Update</string>
+
+    <string name="intent_key_position">position</string>
+    <string name="intent_key_note_id">note id</string>
 </resources>

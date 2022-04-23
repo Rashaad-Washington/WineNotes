@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35852077318274456" />
         <entry key="app/src/main/res/layout/item_view.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/menu.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/note_activity.xml" value="0.1453125" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.21770833333333334" />
       </map>
     </option>
@@ -15,5 +16,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2006340579710145" />
+      </ProjectState>
+    </option>
   </component>
 </project>

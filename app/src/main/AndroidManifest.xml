@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WineNotes">
         <activity
+            android:name=".NoteActivity"
+            android:label="Art Object"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
