@@ -47,39 +47,24 @@ class MainActivity : AppCompatActivity() {
         adapter = MyAdapter()
         binding.recyclerview.setAdapter(adapter)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val db = AppDatabase.getDatabase(applicationContext)
-            val dao = db.noteDao()
-            val results = dao.getAllNotes()
-            for (each in results) {
-                Log.i("STATUS_MAIN:", "read ${each}")
-            }
-            Log.i("sadasd", "${results}")
-
-            withContext(Dispatchers.Main) {
-                notes.clear()
-                notes.addAll(results)
-                adapter.notifyDataSetChanged()
-            }
-        }
+        loadAllNotes()
     }
+
     private val startForAddResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result : ActivityResult ->
 
-            if (result.resultCode == Activity.RESULT_OK){
-                loadAllNotes()
-            }
+            loadAllNotes()
+            adapter.notifyDataSetChanged()
         }
+
     private val startForUpdateResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result : ActivityResult ->
 
-            if (result.resultCode == Activity.RESULT_OK) {
-                // alternative - reload the whole database
-                // good only for small databases
-                loadAllNotes()
-            }
+
+            loadAllNotes()
+            adapter.notifyDataSetChanged()
         }
 
     private fun addNewNote(){
@@ -177,7 +162,7 @@ class MainActivity : AppCompatActivity() {
 // create a formatter that will convert the date to the format
 // you want the user to see on screen. This will use the
 // time zone the user is currently in.
-            val displayFormat = SimpleDateFormat("HH:mm a MM/yyyy ")
+            val displayFormat = SimpleDateFormat("HH:mm a MM/dd/yyyy ")
 // convert the temporary Date object from the database
 // to a string for the user to see
             val displayString : String = displayFormat.format(dateInDatabase)
