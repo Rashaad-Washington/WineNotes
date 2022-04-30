@@ -206,6 +206,13 @@ class MainActivity : AppCompatActivity() {
         } else if (item.getItemId() == R.id.menu_clear_data) {
             deleteAllNotes()
             return true
+        } else if (item.getItemId() == R.id.menu_item_sort_last_modified){
+            loadAllNotesLastModified()
+            return true
+
+        } else if (item.getItemId() == R.id.menu_item_sort_title){
+            loadAllNotesTitle()
+            return true
         }
         return super.onOptionsItemSelected(item)
     }
@@ -238,6 +245,40 @@ class MainActivity : AppCompatActivity() {
             val db = AppDatabase.getDatabase(applicationContext)
             val dao = db.noteDao()
             val results = dao.getAllNotes()
+            for (person in results) {
+                Log.i("STATUS_MAIN:", "read ${person}")
+            }
+
+            withContext(Dispatchers.Main) {
+                notes.clear()
+                notes.addAll(results)
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun loadAllNotesTitle() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val db = AppDatabase.getDatabase(applicationContext)
+            val dao = db.noteDao()
+            val results = dao.getAllNotesTitle()
+            for (person in results) {
+                Log.i("STATUS_MAIN:", "read ${person}")
+            }
+
+            withContext(Dispatchers.Main) {
+                notes.clear()
+                notes.addAll(results)
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun loadAllNotesLastModified() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val db = AppDatabase.getDatabase(applicationContext)
+            val dao = db.noteDao()
+            val results = dao.getAllNotesLastModified()
             for (person in results) {
                 Log.i("STATUS_MAIN:", "read ${person}")
             }
